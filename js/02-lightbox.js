@@ -23,6 +23,12 @@ galleryItemsRef.insertAdjacentHTML(
   createGalleryList(galleryItems, createGalleryItem)
 );
 
+const basicLightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+  captionPosition: "bottom",
+});
+
 galleryItemsRef.addEventListener("click", openModal);
 
 function openModal(event) {
