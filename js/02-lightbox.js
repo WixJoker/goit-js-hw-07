@@ -1,4 +1,46 @@
-import { galleryItems } from './gallery-items.js';
+import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-console.log(galleryItems);
+const galleryItemsRef = document.querySelector(".gallery");
+
+function createGalleryItem({ preview, original, description }) {
+  return `<a class="gallery__item" href="${original}">
+      <img
+        class="gallery__image"
+        src="${preview}"
+        alt="${description}"
+      />
+    </a>`;
+}
+function createGalleryList(galleryItems, createGalleryItem) {
+  return galleryItems
+    .map((galleryItem) => createGalleryItem(galleryItem))
+    .join("");
+}
+
+galleryItemsRef.insertAdjacentHTML(
+  "beforeend",
+  createGalleryList(galleryItems, createGalleryItem)
+);
+
+galleryItemsRef.addEventListener("click", openModal);
+
+function openModal(event) {
+  event.preventDefault();
+
+  const modalWindow = event.target.classList.contains("gallery__image");
+  if (modalWindow) {
+    const instance = basicLightbox.create(
+      `<img src="${event.target.dataset.source}" width="800" height="600">`
+    );
+    instance.show();
+
+    document.addEventListener("keydown", onEscClick);
+
+    function onEscClick(event) {
+      if (event.code === "Escape") {
+        instance.close();
+      }
+    }
+  }
+}
