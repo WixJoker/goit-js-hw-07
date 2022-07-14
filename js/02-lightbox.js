@@ -23,30 +23,8 @@ galleryItemsRef.insertAdjacentHTML(
   createGalleryList(galleryItems, createGalleryItem)
 );
 
-const basicLightbox = new SimpleLightbox(".gallery a", {
+const lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionDelay: 250,
   captionPosition: "bottom",
 });
-
-galleryItemsRef.addEventListener("click", openModal);
-
-function openModal(event) {
-  event.preventDefault();
-
-  const modalWindow = event.target.classList.contains("gallery__image");
-  if (modalWindow) {
-    const instance = basicLightbox.create(
-      `<img src="${event.target.dataset.source}" width="800" height="600">`
-    );
-    instance.show();
-
-    document.addEventListener("keydown", onEscClick);
-
-    function onEscClick(event) {
-      if (event.code === "Escape") {
-        instance.close();
-      }
-    }
-  }
-}
