@@ -39,12 +39,11 @@ function openModal(event) {
     instance.show();
 
     document.addEventListener("keydown", onEscClick);
-    document.addEventListener("mouseenter", mouseEnter);
 
     function onEscClick(event) {
       if (event.code === "Escape") {
         instance.close();
-        document.removeEventListener("keydown", onEscClick);
+        window.removeEventListener("keydown", onEscClick);
       }
     }
   }
