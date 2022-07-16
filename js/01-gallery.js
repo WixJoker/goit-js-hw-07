@@ -34,11 +34,17 @@ function openModal(event) {
   const modalWindow = event.target.classList.contains("gallery__image");
   if (modalWindow) {
     const instance = basicLightbox.create(
-      `<img src="${event.target.dataset.source}" width="800" height="600">`
+      `<img src="${event.target.dataset.source}" width="800" height="600">`,
+      {
+        onShow: (instance) => {
+          window.addEventListener("keydown", onEscClick);
+        },
+        onClose: (instance) => {
+          window.addEventListener("keydown", onEscClick);
+        },
+      }
     );
     instance.show();
-
-    window.addEventListener("keydown", onEscClick);
 
     function onEscClick(event) {
       if (event.code === "Escape") {
