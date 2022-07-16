@@ -37,10 +37,10 @@ function openModal(event) {
       `<img src="${event.target.dataset.source}" width="800" height="600">`,
       {
         onShow: (instance) => {
-          window.addEventListener("keydown", onEscClick);
+          window.addEventListener("keydown", onEscClick) = instance.show;
         },
         onClose: (instance) => {
-          window.addEventListener("keydown", onEscClick);
+          window.addEventListener("keydown", onEscClick) = instance.close;
         },
       }
     );
