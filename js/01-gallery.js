@@ -47,11 +47,5 @@ function openModal(event) {
         document.removeEventListener("keydown", onEscClick);
       }
     }
-    function mouseEnter(event) {
-      if (event.code === "mouseenter") {
-        instance.close();
-        document.removeEventListener("mouseenter", mouseEnter);
-      }
-    }
   }
 }
