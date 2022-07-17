@@ -40,7 +40,7 @@ function openModal(event) {
           window.addEventListener("keydown", onEscClick);
         },
         onClose: () => {
-          window.addEventListener("keydown", onEscClick);
+          window.removeEventListener("keydown", onEscClick);
         },
       }
     );
